@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil | Portfolio</title>
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --bg-gradient: linear-gradient(135deg, #e0f7fa 0%, #fff3e0 100%);
+  --text-color: #333e48;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --header-bg: #b2ebf2;
+  --header-text: #004d40;
+  --accent: #26c6da;
+  --timeline-dot: #26c6da;
+  --timeline-line: #b2dfdb;
+}
+
+
+
+    body.dark {
+      --bg-gradient: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+      --text-color: #f5f5f5;
+      --card-bg: #1e272ecc;
+      --header-bg: #000000;
+      --header-text: #00ffcc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      transition: background 0.5s, color 0.5s;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+   nav a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+    nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease-in-out;
+}
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--header-text);
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links.mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--header-bg);
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .nav-links.mobile.show {
+      display: flex;
+    }
+nav a:hover {
+  color: var(--accent);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+    .hero {
+  text-align: center;
+  padding: 6rem 2rem 3rem;
+  background: linear-gradient(to right, #fceabb, #f8b500);
+  color: #1b1b1b;
+  position: relative;
+  overflow: hidden;
+}
+
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 0;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 2;
+    }
+    body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background: var(--bg-gradient);
+  transition: all 0.5s ease-in-out;
+}
+
+.card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+  color: var(--text-color);
+}
+
+.timeline-entry h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #00695c;
+}
+
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero img {
+      max-width: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      margin-top: 1rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero img:hover {
+      transform: scale(1.05);
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .resume-btn, .theme-toggle {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      margin: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+.resume-btn {
+  background: var(--accent);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #0097a7;
+}
+
+.theme-toggle {
+  background-color: #eeeeee;
+  color: #333;
+  border: 1px solid #ccc;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #d4f1f9;
+}
+
+    .resume-btn {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .theme-toggle {
+      background-color: #333;
+      color: #fff;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    @media (max-width: 768px) {
+  .nav-links.desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--header-text);
+    margin: 4px 0;
+    transition: all 0.4s ease;
+  }
+
+  .hamburger.active .top-bar {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active .middle-bar {
+    opacity: 0;
+  }
+  .section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-in-out;
+}
+
+
+  .hamburger.active .bottom-bar {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .nav-links.mobile {
+    display: none;
+    flex-direction: column;
+    background: var(--header-bg);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    border-radius: 10px;
+    padding: 1rem;
+    z-index: 10;
+  }
+
+  .nav-links.mobile.show {
+    display: flex;
+  }
+}
+/* Smooth page & element transitions */
+body, .card, .hero, .section {
+  transition: all 0.6s ease-in-out;
+}
+
+/* Hamburger hover */
+.hamburger:hover .bar {
+  background-color: var(--accent);
+  transform: scaleX(1.1);
+}
+
+
+/* Timeline structure */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 3px solid var(--timeline-line);
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 0.25rem;
+  width: 14px;
+  height: 14px;
+  background-color: var(--timeline-dot);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--timeline-line);
+  z-index: 1;
+}
+
+
+  </style>
+</head>
+<body>
+ <header>
+  <div class="logo">Nikhil</div>
+  <nav class="nav-links desktop" id="desktopMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <div class="bar top-bar"></div>
+    <div class="bar middle-bar"></div>
+    <div class="bar bottom-bar"></div>
+  </div>
+  <nav class="nav-links mobile" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <a href="#skills">Skills</a>
+  </nav>
+</header>
+
+
+  <section class="hero">
+    <h1 id="typewriter"></h1>
+    <p>Software Developer | AWS | Node.js | Python</p>
+    <img src="assets/profilepic.jpeg" alt="Profile Picture" />
+    <div>
+      <a class="resume-btn" href="Nikhilteja.pdf" download>Download Resume</a>
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">Toggle Theme</button>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+  <h2>About Me</h2>
+  <p>
+    I'm a passionate software developer with a Master’s in Computer Science from the University of New Haven, currently working as a Lead Technical Writer at Honeywell. With strong skills in Python, SQL, AWS, and Node.js, I bridge the gap between development and documentation. Previously a Teaching Assistant for Data Mining and C/C++, I enjoy both building solutions and helping others grow.
+  </p>
+</section>
+
+
+  <section class="section" id="education">
+  <h2>Education</h2>
+  <p>Master’s in Computer Science, University of New Haven (2022 - 2024), GPA: 3.94/4.0</p>
+  <p>B.Tech in Computer Science, Vignan’s University (2018 - 2022), GPA: 3.8/4.0</p>
+</section>
+
+
+  <section class="section" id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-entry">
+      <h3>Lead Technical Writer | Honeywell</h3>
+      <p>Created and managed technical documentation using Adobe FrameMaker and MadCap Flare. Collaborated across teams to deliver user manuals and online help systems. Mentored junior writers and improved CMS workflows.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>Teaching Assistant | University of New Haven</h3>
+      <p>Assisted in courses like Data Mining, C/C++, AI, Java, and Windows Networking. Helped students with labs and problem-solving during in-person sessions.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>Technical Writing Intern | GeeksForGeeks</h3>
+      <p>Published technical articles focused on Python, SQL, HTML, and Java, strengthening online learning resources.</p>
+    </div>
+  </div>
+</section>
+<section class="section" id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> Java, Python, C, C++, JavaScript, R</li>
+    <li><strong>Web Dev:</strong> HTML, CSS, Vue.js, Node.js, Django</li>
+    <li><strong>Databases:</strong> SQL, MongoDB, SQLite, DBMS</li>
+    <li><strong>Cloud:</strong> AWS, Cloud Infrastructure</li>
+    <li><strong>Tools:</strong> FrameMaker, MadCap Flare, Git</li>
+    <li><strong>ML & AI:</strong> Weka, OpenCV, Machine Learning, Data Mining</li>
+    <li><strong>IoT:</strong> Arduino, Sensors, TinkerCAD</li>
+  </ul>
+</section>
+
+<section class="section" id="projects">
+  <h2>Projects</h2>
+  <div class="timeline">
+    <div class="timeline-entry">
+      <h3>Portfolio Website Using Node.js & Vue.js</h3>
+      <p>Developed a dynamic portfolio site using Vue.js frontend and Node.js backend. Integrated MongoDB and deployed on Netlify.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>IoT Smart Plant System</h3>
+      <p>Built a smart plant watering system using Arduino, moisture sensors, and TinkerCAD simulation for automation and alerts.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>Hand Gesture Detection</h3>
+      <p>Implemented an ANN-based system to classify hand gestures using image processing and deep learning techniques.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>Crop Life Prediction</h3>
+      <p>Used ML models with Flask and AWS to predict crop health status and potential causes of failure, aiding timely intervention.</p>
+    </div>
+    <div class="timeline-entry">
+      <h3>Online Voting System</h3>
+      <p>Designed a secure voting system using MySQL with robust SQL-based data integrity mechanisms and trigger logic.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="section" id="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form" method="POST" action="http://localhost:3000/send" style="max-width: 600px; margin: auto;">
+      <div style="margin-bottom: 1rem;">
+        <input type="text" name="name" placeholder="Your Name" required />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <input type="email" name="email" placeholder="Your Email" required />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <textarea name="message" placeholder="Your Message" required style="height: 150px;"></textarea>
+      </div>
+      <button type="submit" class="resume-btn">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    const typewriterText = "Hi, I'm Nikhil Teja Tangella";
+    let idx = 0;
+    function typeEffect() {
+      if (idx <= typewriterText.length) {
+        document.getElementById('typewriter').textContent = typewriterText.slice(0, idx++);
+        setTimeout(typeEffect, 100);
+      }
+    }
+    typeEffect();
+
+    // Scroll Animations
+    window.addEventListener('scroll', function () {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top < window.innerHeight) {
+          section.classList.add('visible');
+        }
+      });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
